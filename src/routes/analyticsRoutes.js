@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const analyticsCtrl = require("../controllers/analytics.controller");
-const { authenticate } = require("../middleware/auth.middleware");
-const { authorizeRoles } = require("../middleware/role.middleware");
+const analyticsCtrl = require("../controllers/analytiicsController");
+const { authenticate } = require("../middleware/authMiddleware");
+const { authorizeRoles } = require("../middleware/roleMiddleware");
 const roleRateLimiter = require("../middleware/roleRateLimiter");
 
 // protect analytics: only manager/admin

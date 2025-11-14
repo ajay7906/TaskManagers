@@ -11,6 +11,7 @@ const reteLimit = require('express-rate-limit');
 const http = require('http')
 const initSocket = require('./socket');
 const redis = require('./config/redis');
+const analyticsRoutes = require("./routes/analyticsRoutes");
 
 
 const app = express();
@@ -36,6 +37,8 @@ app.set('redis', redis);
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api/analytics", analyticsRoutes);
+
 
 // Swagger UI
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
