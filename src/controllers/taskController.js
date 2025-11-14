@@ -64,7 +64,7 @@ exports.getTaskById = async (req, res) => {
         }
 
         if (!req.user.roles.includes("admin") && !req.user.roles.includes("manager")) {
-            if (task.creator.toString() !== req.user.id && task.assignee.toString() !== req.user.id) {
+            if (task.creator.toString() !== req.user.id && task.assignee?.toString() !== req.user.id) {
               return res.status(403).json({ message: 'Access denied' });
             }
           }

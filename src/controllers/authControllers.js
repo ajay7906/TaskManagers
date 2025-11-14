@@ -3,6 +3,7 @@ const {validationResult}  = require('express-validator');
 const User = require('../models/User');
 
 const generateAccessToken = (user) => {
+    console.log('secetPrivKey', process.env.JWT_SECRET)
     return jwt.sign({
         id: user._id,
         roles: user.roles,
@@ -68,7 +69,7 @@ exports.login = async (req, res) => {
         if(!user){
             return res.status(400).json({message: 'Invalid username '});
         }
-        const copmparePassword = await user.copmparePassword(password);
+        const copmparePassword = await user.comparePassword(password);
         if(!copmparePassword){
             return res.status(400).json({message: 'Invalid password'});
         }
