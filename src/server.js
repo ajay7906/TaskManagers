@@ -12,6 +12,7 @@ const http = require('http')
 const initSocket = require('./socket');
 const redis = require('./config/redis');
 const analyticsRoutes = require("./routes/analyticsRoutes");
+const yaml = require('yamljs')
 
 
 const app = express();

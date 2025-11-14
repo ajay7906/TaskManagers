@@ -16,7 +16,7 @@ router.get("/", authenticate, roleRateLimiter, taskCtrl.getAllTasks);
 router.get("/:id", authenticate, roleRateLimiter, taskCtrl.getTaskById);
 
 // Update
-router.put("/:id", authenticate, roleRateLimiter, taskCtrl.updateTask);
+router.patch("/:id", authenticate, roleRateLimiter, taskCtrl.updateTask);
 
 // Delete
 router.delete("/:id", authenticate, roleRateLimiter, taskCtrl.deleteTask);
