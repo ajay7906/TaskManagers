@@ -27,7 +27,7 @@ exports.createTask = async (req, res) => {
 
         })
         await task.save();
-        await task.populate("creator", "username email").execPopulate();
+        await task.populate("creator", "username email")
         await invalidateTaskCache(req);
         const io = req.app.get("io");
         if (io) {
@@ -110,7 +110,7 @@ exports.updateTask = async (req, res) => {
             return res.status(404).json({ message: 'Task not found' });
         }
         if (!req.user.roles.includes("admin") && !req.user.roles.includes("manager")) {
-            if (task.creator.toString() !== req.user.id && task.assignee.toString() !== req.user.id) {
+            if (task.creator.toString() !== req.user.id && task.assignee?.toString() !== req.user.id) {
                 return res.status(403).json({ message: 'Access denied' });
             }
         }
@@ -118,7 +118,7 @@ exports.updateTask = async (req, res) => {
         Object.assign(task, req.body);
         await task.save();
 
-        await task.populate("creator", "username email").execPopulate();
+        await task.populate("creator", "username email")
 
         await invalidateTaskCache(req);
         const io = req.app.get("io");
@@ -186,7 +186,7 @@ exports.assignTask = async (req, res) => {
         task.assignee = assignee;
         await task.save();
 
-        await task.populate("assignee", "username email").execPopulate();
+        await task.populate("assignee", "username email")
 
         await invalidateTaskCache(req);
 
