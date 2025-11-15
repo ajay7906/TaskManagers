@@ -31,12 +31,12 @@ exports.register = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { username, email, password } = req.body;
+        const { username, email, password, roles } = req.body;
         let existingUser = await User.findOne({ $or: [{ username }, { email }] });
         if (existingUser) {
             return res.status(400).json({ message: 'Username or email already in use' });
         }
-        const newUser = new User({ username, email, password });
+        const newUser = new User({ username, email, password, roles });
         await newUser.save();
 
         const accessToken = generateAccessToken(newUser);
