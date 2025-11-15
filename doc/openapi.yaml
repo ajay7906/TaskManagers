@@ -786,9 +786,7 @@ paths:
         Creates a new user.
         Frontend may send "roles" array such as ["admin"], ["manager"], ["user"].
 
-        ⚠ WARNING  
-        This behavior is suitable for controlled testing only.
-        Do NOT allow client-driven admin assignment in production.
+       
       requestBody:
         required: true
         content:
