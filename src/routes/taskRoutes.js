@@ -22,6 +22,6 @@ router.patch("/:id", authenticate, roleRateLimiter, taskCtrl.updateTask);
 router.delete("/:id", authenticate, roleRateLimiter, taskCtrl.deleteTask);
 
 // Assign
-router.post("/:id/assign", authenticate, roleRateLimiter, authorizeRoles("admin", "manager"), taskCtrl.assignTask);
+router.patch("/:id/assign", authenticate, roleRateLimiter, authorizeRoles("admin", "manager"), taskCtrl.assignTask);
 
 module.exports = router;
